@@ -26,7 +26,7 @@ question 2
 b. rooster chicken relation
 ---------------------------
 
-current solution has only one class implementing both. this could, however, be implented in 2 (Chicken and Rooster) or 3 classes (ChickenRoosterBase). in either case, they would have been on same level inheriting from same parent.
+current solution has only one class implementing both. this could, however, be implemented in 2 (Chicken and Rooster) or 3 classes (ChickenRoosterBase). in either case, they would have been on same level inheriting from same parent.
 
 c. rooster without inheritance
 ------------------------------

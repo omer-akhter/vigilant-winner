@@ -6,11 +6,15 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.animals.Dolphin;
 import com.animals.Sound;
 import com.animals.birds.Bird;
 import com.animals.birds.Chicken;
 import com.animals.birds.Duck;
 import com.animals.birds.Parrot;
+import com.animals.fish.Clownfish;
+import com.animals.fish.Fish;
+import com.animals.fish.Shark;
 
 class AnimalTest {
 	private final ByteArrayOutputStream outCaptured = new ByteArrayOutputStream();
@@ -25,7 +29,7 @@ class AnimalTest {
 		System.setOut(out);
 		return outCaptured.toString();
 	}
-	
+
 	@Test
 	void testDuck() {
 		Duck d = new Duck();
@@ -189,5 +193,65 @@ class AnimalTest {
 		captureStart();
 		b.sing();
 		Assertions.assertTrue(captureEnd().equals("Cock-a-doodle-doo\n"), "what is parrot imitating");
+	}
+
+	@Test
+	void testShark() {
+		Shark s = new Shark();
+		Assertions.assertEquals(s.getColor(), Fish.Color.GRAY);
+		Assertions.assertEquals(s.getSize(), Fish.Size.LARGE);
+
+		captureStart();
+		s.swim();
+		Assertions.assertTrue(captureEnd().equals("I am swimming\n"), "sharks can't swim?");
+
+		captureStart();
+		s.eat(s);
+		Assertions.assertTrue(captureEnd().equals("shark can't eat a shark\n"), "shark is eating a shark");
+
+		Fish f = new Clownfish();
+		captureStart();
+		s.eat(f);
+		Assertions.assertTrue(captureEnd().equals("eating clownfish\n"), "shark can't eat a clownfish");
+
+		f = s;
+		Assertions.assertEquals(f.getColor(), Fish.Color.GRAY);
+		Assertions.assertEquals(f.getSize(), Fish.Size.LARGE);
+
+		captureStart();
+		f.swim();
+		Assertions.assertTrue(captureEnd().equals("I am swimming\n"), "sharks can't swim?");
+	}
+
+	@Test
+	void testClownfish() {
+		Clownfish c = new Clownfish();
+		Assertions.assertEquals(c.getColor(), Fish.Color.ORANGE);
+		Assertions.assertEquals(c.getSize(), Fish.Size.SMALL);
+
+		captureStart();
+		c.swim();
+		Assertions.assertTrue(captureEnd().equals("I am swimming\n"), "clownfish can't swim?");
+
+		captureStart();
+		c.joke();
+		Assertions.assertTrue(captureEnd().equals("i could tell you a joke but I just can't remember one at the moment\n"), "clownfish can't make a joke");
+
+		Fish f = c;
+		Assertions.assertEquals(f.getColor(), Fish.Color.ORANGE);
+		Assertions.assertEquals(f.getSize(), Fish.Size.SMALL);
+
+		captureStart();
+		f.swim();
+		Assertions.assertTrue(captureEnd().equals("I am swimming\n"), "clownfish can't swim?");
+	}
+
+	@Test
+	void testDolphin() {
+		Dolphin d = new Dolphin();
+
+		captureStart();
+		d.swim();
+		Assertions.assertTrue(captureEnd().equals("I am swimming\n"), "dolphin can't swim?");
 	}
 }

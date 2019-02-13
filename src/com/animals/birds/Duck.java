@@ -1,5 +1,6 @@
 package com.animals.birds;
 
+import com.animals.Animal;
 import com.animals.Sound;
 import com.animals.Swimming;
 
@@ -10,6 +11,6 @@ public class Duck extends Bird implements Swimming {
 
 	@Override
 	public void swim() {
-		System.out.println("I am swimming");
+		Animal.swimImpl.swim();
 	}
 }
