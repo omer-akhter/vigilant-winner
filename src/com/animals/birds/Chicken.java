@@ -2,6 +2,11 @@ package com.animals.birds;
 
 import com.animals.Sound;
 
+// there is no Rooster class in this solutions. we could create a
+// ChickenRoosterBase with fly and then inherit both Chicken and Rooster
+// from it. but I prefer to avoid unnecessary hierarchy and it appears
+// to be suggested in the question statement as well 
+
 public class Chicken extends Bird {
 	public Chicken(boolean male) {
 		if (male) {
