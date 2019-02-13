@@ -1,3 +1,5 @@
+some answers are given below. other answers have been demonstrated in the code.
+
 question 1
 ==========
 
