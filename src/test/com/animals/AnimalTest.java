@@ -6,6 +6,9 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import com.animals.Animal;
+import com.animals.Butterfly;
+import com.animals.Caterpillar;
 import com.animals.Dolphin;
 import com.animals.Sound;
 import com.animals.birds.Bird;
@@ -235,7 +238,9 @@ class AnimalTest {
 
 		captureStart();
 		c.joke();
-		Assertions.assertTrue(captureEnd().equals("i could tell you a joke but I just can't remember one at the moment\n"), "clownfish can't make a joke");
+		Assertions.assertTrue(
+				captureEnd().equals("i could tell you a joke but I just can't remember one at the moment\n"),
+				"clownfish can't make a joke");
 
 		Fish f = c;
 		Assertions.assertEquals(f.getColor(), Fish.Color.ORANGE);
@@ -253,5 +258,28 @@ class AnimalTest {
 		captureStart();
 		d.swim();
 		Assertions.assertTrue(captureEnd().equals("I am swimming\n"), "dolphin can't swim?");
+	}
+
+	@Test
+	void testCaterpillar() {
+		Caterpillar c = new Caterpillar();
+
+		captureStart();
+		c.walk();
+		Assertions.assertTrue(captureEnd().equals("I am walking\n"), "caterpillar can't walk?");
+
+		Animal a = c.morph();
+		Assertions.assertTrue(a instanceof Butterfly);
+
+		Butterfly b = (Butterfly) a;
+		captureStart();
+		b.fly();
+		Assertions.assertTrue(captureEnd().equals("I am flying\n"), "butterfly can't walk?");
+
+		captureStart();
+		c.walk();
+		Assertions.assertTrue(captureEnd().equals("I am not a caterpillar anymore\n"), "caterpillar didn't morph?");
+		
+		Assertions.assertSame(a, c.morph(), "caterpillar is a new butterfly?");
 	}
 }

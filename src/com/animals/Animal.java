@@ -7,4 +7,19 @@ public abstract class Animal {
 			System.out.println("I am swimming");
 		}
 	};
+
+	protected static final Flying flyImpl = new Flying() {
+		@Override
+		public void fly() {
+			System.out.println("I am flying");
+		}
+	};
+
+	protected static final Walking walkImpl = new Walking() {
+
+		@Override
+		public void walk() {
+			System.out.println("I am walking");
+		}
+	};
 }

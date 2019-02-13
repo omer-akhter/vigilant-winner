@@ -10,6 +10,7 @@ public enum Sound {
 	PHONE("Ring, ring");
 
 	private final String sound;
+
 	public final String get() {
 		return this.sound;
 	}

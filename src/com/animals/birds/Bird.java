@@ -12,12 +12,12 @@ public abstract class Bird extends Animal implements Flying, Singing, Walking {
 
 	@Override
 	public void walk() {
-		System.out.println("I am walking");
+		Animal.walkImpl.walk();
 	}
 
 	@Override
 	public void fly() {
-		System.out.println("I am flying");
+		Animal.flyImpl.fly();
 	}
 
 	@Override
