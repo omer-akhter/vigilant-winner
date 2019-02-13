@@ -274,7 +274,7 @@ class AnimalTest {
 		Butterfly b = (Butterfly) a;
 		captureStart();
 		b.fly();
-		Assertions.assertTrue(captureEnd().equals("I am flying\n"), "butterfly can't walk?");
+		Assertions.assertTrue(captureEnd().equals("I am flying\n"), "butterfly can't fly?");
 
 		captureStart();
 		c.walk();
